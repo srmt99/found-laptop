@@ -1,5 +1,4 @@
 def decode_text(encoded):
-    """Simple text obfuscation - reverse + shift"""
     reversed_text = encoded[::-1]
     decoded = ""
     for char in reversed_text:
