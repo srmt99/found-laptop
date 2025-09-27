@@ -1,16 +1,5 @@
-def decode_text(encoded):
-    reversed_text = encoded[::-1]
-    decoded = ""
-    for char in reversed_text:
-        if char.isalpha():
-            if char.islower():
-                decoded += chr((ord(char) - ord('a') - 3) % 26 + ord('a'))
-            else:
-                decoded += chr((ord(char) - ord('A') - 3) % 26 + ord('A'))
-        else:
-            decoded += char
-    return decoded
-
+from decoder import decode_text
+ 
 def ask_question(question, target_word):
     """Ask a question until the correct answer is given"""
     attempts = 0
