@@ -1,15 +1,4 @@
-def decode_text(encoded):
-    reversed_text = encoded[::-1]
-    decoded = ""
-    for char in reversed_text:
-        if char.isalpha():
-            if char.islower():
-                decoded += chr((ord(char) - ord('a') - 3) % 26 + ord('a'))
-            else:
-                decoded += chr((ord(char) - ord('A') - 3) % 26 + ord('A'))
-        else:
-            decoded += char
-    return decoded
+from decoder import decode_text
 
 def ask_coordinates():
     """Ask for coordinates until the correct ones are entered"""
@@ -17,17 +6,17 @@ def ask_coordinates():
 
     print("=" * 30)
     print("Meeting Spot Coordinates Required")
-    print("Enter the coordinates with 4 decimals")
-    print("Example: 39.0928")
+    print("Enter the first 2 digits of each coordinate")
+    print("Example: 39 N, 12 E")
     print("=" * 30)
 
     # Ask for N coordinate
     n_attempts = 0
     while True:
         n_attempts += 1
-        n_coord = input("Enter N coordinate: ").strip()
+        n_coord = input("Enter first 2 digits of N coordinate: ").strip()
 
-        if decode_text("6520.14") in n_coord:
+        if decode_text("Nc") == n_coord:
             print("✓ N coordinate correct!\n")
             break
         else:
@@ -41,9 +30,9 @@ def ask_coordinates():
     e_attempts = 0
     while True:
         e_attempts += 1
-        e_coord = input("Enter E coordinate: ").strip()
+        e_coord = input("Enter first 2 digits of E coordinate: ").strip()
 
-        if decode_text("1479.82") in e_coord:
+        if decode_text("Ec") == e_coord:
             print("✓ E coordinate correct!\n")
             print(f"\033[92mAccess granted. Password: {decode_text(password)}\033[0m")
             return True
